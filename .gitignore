@@ -1,1 +1,7 @@
-__init__.py
+.idea/
+__pycache__/
+info/__pycache__/
+info/modules/__pycache__/
+info/modules/home/__pycache__/
+migrations
+logs/log*
