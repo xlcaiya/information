@@ -42,7 +42,7 @@ def create_app(config_type):  # 创建应用  工厂函数（调用者提供物�
     # 创建数据库连接
     db = SQLAlchemy(app)
     # 创建redis连接
-    sr = StrictRedis(host=config_class.REDIS_HOST, port=config_class.REDIS_PORT)
+    sr = StrictRedis(host=config_class.REDIS_HOST, port=config_class.REDIS_PORT, decode_responses=True)
     # 创建Session存储对象
     Session(app)
     # 创建迁移器
@@ -51,6 +51,9 @@ def create_app(config_type):  # 创建应用  工厂函数（调用者提供物�
     # 3.注册蓝图  (如果内容只被使用一次，则可以在使用时才导入该内容)
     from info.modules.home import home_blu
     app.register_blueprint(home_blu)
+
+    from info.modules.passport import passport_blu
+    app.register_blueprint(passport_blu)
 
     # 配置日志
     setup_log(config_class.LOG_LEVEL)

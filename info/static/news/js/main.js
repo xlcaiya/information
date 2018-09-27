@@ -285,6 +285,7 @@ function getCookie(name) {
     return r ? r[1] : undefined;
 }
 
+//  生成随机的字符串
 function generateUUID() {
     var d = new Date().getTime();
     if (window.performance && typeof window.performance.now === "function") {
